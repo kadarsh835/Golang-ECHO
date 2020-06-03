@@ -10,20 +10,6 @@ import (
 	"github.com/labstack/echo"
 )
 
-// Event : Might need to export
-type Event struct {
-	Id    uint16 `json :"id"`
-	Title string `json :"title"`
-	Prize uint16 `json :"prize"`
-	Head  string `json :"head"`
-	Phone string `json :"phone"`
-}
-
-// Events : Might need to export
-type Events struct {
-	Events []Event `json:"events"`
-}
-
 // IndexHandler : call from mainGroup.go
 func IndexHandler(c echo.Context) error {
 
@@ -39,8 +25,10 @@ func IndexHandler(c echo.Context) error {
 	}
 
 	sqlStatement := "SELECT * FROM events"
+
+	defer db.Close()
 	rows, err := db.Query(sqlStatement)
-	checkError(err)
+	CheckError(err)
 
 	if err != nil {
 		fmt.Println(err)
@@ -65,14 +53,6 @@ func IndexHandler(c echo.Context) error {
 		}
 		result.Events = append(result.Events, event)
 	}
-	fmt.Println(result)
-	db.Close()
 	err = c.Render(http.StatusOK, "index.html", result)
 	return err
-}
-
-func checkError(e error) {
-	if e != nil {
-		fmt.Println(e)
-	}
 }

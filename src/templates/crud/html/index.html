@@ -135,7 +135,7 @@ span.psw {
 </center>
 <div id="id01" class="modal">
   
-  <form class="modal-content animate" action="/action_page.php" method="post">
+  <form class="modal-content animate" action="/add_event" method="post">
 
     <div class="container">
 
@@ -164,13 +164,13 @@ span.psw {
 </div>
 
 <div id="id02" class="modal">
-    <form class="modal-content animate" action="/action_page.php" method="post">
+    <form class="modal-content animate" action="/get_details" method="GET">
   
       <div class="container">
 
         <center><h3>Get Event Details for a particular event</h3></center>
         <label for="id"><b>Event ID</b></label>
-        <input type="number" placeholder="Enter Event ID" name="id" required>
+        <input type="text" placeholder="Enter Event ID" name="id" required>
         
         <br><br>
           
@@ -191,12 +191,42 @@ span.psw {
         Co-Ordinator: <b>{{.Head}}</b><br>
         Contact: <b>{{.Phone}}</b><br>
         <p>
-            <button onclick="document.getElementById('id03').style.display='block'" style="width:auto;">Edit this Event</button>
-            <form action="https://google.com">
+            <button onclick=changeParameters({{.Id}}) style="width:auto;">Edit this Event</button>
+            <form action="/delete/{{.Id}}">
                 <input type="submit" style= "background-color:red;" value="DELETE" />
             </form>
         </p>
-        <br><br><br>
+        <br>
+
+        <div id="id03" class="modal">
+        
+            <form class="modal-content animate" method="POST" name="update_contents" id="update_contents">
+        
+            <div class="container">
+        
+                <center><h3>Edit This Event</h3></center>
+                <label for="title"><b>Event Name</b></label>
+                <input type="text" placeholder="{{.Title}}" name="title" required>
+        
+                <label for="prize"><b>Prizes Worth</b></label>
+                <input type="number" placeholder="{{.Prize}}" name="prize" required>
+                
+                <br><br>
+        
+                <label for="head"><b>Co-Ordinator Name</b></label>
+                <input type="text" placeholder="{{.Head}}" name="head" required>
+        
+                <label for="phone"><b>Contact Number</b></label>
+                <input type="number" placeholder="{{.Phone}}" name="phone" required>
+                
+            </div>
+        
+            <div class="container" style="background-color:#f1f1f1">
+                <button type="submit" style="width:auto;">Edit Event</button>
+                <button type="button" onclick="document.getElementById('id03').style.display='none'" class="cancelbtn">Cancel</button>
+            </div>
+            </form>
+        </div>
     {{end}}
 </ul>
 
@@ -208,6 +238,16 @@ var modal = document.getElementById('id01');
 window.onclick = function(event) {
     if (event.target == modal) {
         modal.style.display = "none";
+    }
+}
+function changeParameters(id){
+    console.log(id);
+    document.getElementById('id03').style.display='block';
+    try{
+        document['update_contents'].action="/update_detail/"+id+"";
+    }
+    catch(e){
+        console.log(e);
     }
 }
 </script>
