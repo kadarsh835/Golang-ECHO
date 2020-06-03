@@ -47,6 +47,5 @@ func ConnectDatabase() *sql.DB {
 	db.SetMaxOpenConns(maxOpenConn)
 	db.SetMaxIdleConns(maxIdleConn)
 
-	log.Println("Database connected!")
 	return db
 }
