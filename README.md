@@ -5,7 +5,7 @@
 
 This is the first application that I have developed in Golang and Echo.
 <a name="useful_links"></a>
-#### Some useful links to get you started with Golang and the Echo framework are:
+#### Some useful links to get you started with Golang and the Echo framework:
 - This one is a very useful link for the absolute beginners in Go lang. This covers all the basic concepts of Go.
     > https://www.tutorialspoint.com/go/index.htm
 - This and a few other articles are concerned with using Echo framework in Go with Postgres are available in this link.

@@ -193,7 +193,7 @@ span.psw {
         Co-Ordinator: <b>{{.Head}}</b><br>
         Contact: <b>{{.Phone}}</b><br>
         <p>
-            <button onclick=changeParameters({{.Id}}) style="width:auto;">Edit this Event</button>
+            <button onclick=changeParameters({{.Id}},{{.Title}},{{.Prize}},{{.Head}},{{.Phone}}) style="width:auto;">Edit this Event</button>
             <form action="/delete/{{.Id}}">
                 <input type="submit" style= "background-color:red;" value="DELETE" />
             </form>
@@ -208,18 +208,18 @@ span.psw {
         
                 <center><h3>Edit This Event</h3></center>
                 <label for="title"><b>Event Name</b></label>
-                <input type="text" placeholder="{{.Title}}" name="title" required>
+                <input type="text" placeholder="{{.Title}}" name="title" id="edit-title" required>
         
                 <label for="prize"><b>Prizes Worth</b></label>
-                <input type="number" placeholder="{{.Prize}}" name="prize" required>
+                <input type="number" placeholder="{{.Prize}}" name="prize" id="edit-prize" required>
                 
                 <br><br>
         
                 <label for="head"><b>Co-Ordinator Name</b></label>
-                <input type="text" placeholder="{{.Head}}" name="head" required>
+                <input type="text" placeholder="{{.Head}}" name="head" id="edit-head" required>
         
                 <label for="phone"><b>Contact Number</b></label>
-                <input type="number" placeholder="{{.Phone}}" name="phone" required>
+                <input type="number" placeholder="{{.Phone}}" name="phone" id="edit-phone" required>
                 
             </div>
         
@@ -242,15 +242,28 @@ window.onclick = function(event) {
         modal.style.display = "none";
     }
 }
-function changeParameters(id){
+function changeParameters(id, title, prize, head, phone){
     console.log(id);
-    console.log(document['update_contents'][0]);
+    var update_action=document['update_contents'];
     try{
-        document['update_contents'][0].action="/update_detail/"+id+"";
+      document['update_contents'].action="/update_detail/"+id+"";
+      document.getElementById('edit-title').defaultValue=""+title
+      document.getElementById('edit-prize').defaultValue=""+prize
+      document.getElementById('edit-head').defaultValue=""+head
+      document.getElementById('edit-phone').defaultValue=""+phone
+      for (i=0; i< update_action.length; i++){
+        document['update_contents'][i].action="/update_detail/"+id+"";
+        console.log(document['edit-title'][i]);
+        document.getElementById('edit-title')[i].defaultValue=""+title
+        document.getElementById('edit-prize')[i].defaultValue=""+prize
+        document.getElementById('edit-head')[i].defaultValue=""+head
+        document.getElementById('edit-phone')[i].defaultValue=""+phone
+      }
     }
-    catch(e){
-        console.log(e);
+    catch(err){
+      console.log(err);
     }
+
     document.getElementById('id03').style.display='block';
 }
 </script>
