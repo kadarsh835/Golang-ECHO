@@ -1,8 +1,16 @@
 # Web-Development using Go's Echo framework
+This is the first application that I have developed in Golang and Echo.
+#### Some useful links to get you started with Goland and the Echo framework are:
+- This one is a very useful link for the absolute beginners in Go lang. This covers all the basic concepts of Go.
+    > https://www.tutorialspoint.com/go/index.htm
+- This and a few other articles are concerned with using Echo framework in Go with Postgres are available in this link.
+    > https://www.restapiexample.com/golang-tutorial/creating-golang-api-echo-framework-postgresql/
+- The project consumes REST APIs. An easy tutorial on this can be found at
+    > https://www.restapiexample.com/golang-tutorial/consume-restful-apis-using-echo-golang/
+- Unlike Django or other similar frameworks, Echo doesn't have a directory structure of its own. Managing large volumes of code can be really dificult if we don't create packages and maintain a proper directory structure. There are hardly any resources on the Internet explaining this in detail with respect to the Echo framework. However, this Youtube playlist covers you pretty well
+    > https://www.youtube.com/playlist?list=PLFmONUGpIk0YwlJMZOo21a9Q1juVrk4YY
 
 ## Steps to run the application
-
-
 - #### Clone this repository locally
     - Run the command:
         > ```git clone 'https://github.com/kadarsh835/Golang-ECHO.git'```
