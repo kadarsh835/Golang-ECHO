@@ -24,7 +24,6 @@ func PutEventDetails(c echo.Context) error {
 	if err := c.Bind(event); err != nil {
 		return err
 	}
-	print(event)
 	defer db.Close()
 	sqlStatement := "UPDATE events SET title=$1, prize=$2, head=$3, phone=$4 WHERE id=$5"
 	res, err := db.Query(sqlStatement, event.Title, event.Prize, event.Head, event.Phone, id)

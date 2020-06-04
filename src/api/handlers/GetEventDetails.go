@@ -17,7 +17,7 @@ func GetEventDetails(c echo.Context) error {
 	var db *sql.DB
 	db = dbconnect.ConnectDatabase()
 
-	idStr, _ := strconv.Atoi(c.Param("id"))
+	idStr, _ := strconv.Atoi(c.QueryParam("id"))
 	id := uint16(idStr)
 
 	event := new(Event)
