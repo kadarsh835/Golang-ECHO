@@ -12,5 +12,5 @@ func MainGroup(e *echo.Echo) {
 	e.POST("/add_event", handlers.AddEventHandler)
 	e.GET("/delete/:id", handlers.DeleteEventHandler)
 	e.GET("/get_details", handlers.GetEventDetails)
-	e.POST("/update_detail", handlers.PutEventDetails)
+	e.POST("/update_detail/:id", handlers.PutEventDetails)
 }

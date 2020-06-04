@@ -21,3 +21,5 @@ INSERT INTO events VALUES (
     'Adarsh',
     7356789654
 );
+
+UPDATE events SET title='New Title', prize=60000, head='New Head', phone=7355404764 WHERE id=3;

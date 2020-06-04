@@ -2,6 +2,7 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="https://proworktree.com/static/images/registered-image-2.png" sizes="16x16" type="image/png">
 <style>
 body {font-family: Arial, Helvetica, sans-serif;}
 
@@ -126,6 +127,7 @@ span.psw {
 </style>
 </head>
 <body>
+<img width="160px" height="40px" src="https://proworktree.com/static/images/registered-image-2.png">
 <center>
 <h1>UPCOMING EVENTS TO PARTCIPATE IN</h1>
 
@@ -200,7 +202,7 @@ span.psw {
 
         <div id="id03" class="modal">
         
-            <form class="modal-content animate" method="POST" name="update_contents" id="update_contents">
+            <form class="modal-content animate" request="/" method="POST" name="update_contents" id="update_contents">
         
             <div class="container">
         
@@ -242,13 +244,14 @@ window.onclick = function(event) {
 }
 function changeParameters(id){
     console.log(id);
-    document.getElementById('id03').style.display='block';
+    console.log(document['update_contents'][0]);
     try{
-        document['update_contents'].action="/update_detail/"+id+"";
+        document['update_contents'][0].action="/update_detail/"+id+"";
     }
     catch(e){
         console.log(e);
     }
+    document.getElementById('id03').style.display='block';
 }
 </script>
 
